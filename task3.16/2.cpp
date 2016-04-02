@@ -1,12 +1,6 @@
-//Для стека:
-//1. Функция добавления элемента
-//2. Функция удаления элемента
-//3. Получение значения верхнего элемента
-//Для стека задаются N - количество действий со стеком, действия в формате:
-//add <data>
-//del
-//get(вывод значения)
-//
+/*
+@mainpage Приложение для проверки работы стека
+*/
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -14,12 +8,23 @@
 using namespace std;
 
 typedef struct my_list{
+/**
+@brief Структура "Список"
+@detailed Имеет данные и указатель на следующий элемент в списке
+*/
 	int data;
 	struct my_list* next;
 } MList;
 
 int add(MList* phead, int index, int data)
 {
+/**
+@brief Функция добавления элемента по индексу
+@detailed Данная функция добавляет элемент начиная с 0 - перед начальным элементом списка
+@param phead первый элемент списка
+@param index индекс нового элемента списка
+@param data данные нового элемента списка
+*/
 	MList *item = new MList;
 	MList *tmp = NULL;
 	int i;
@@ -41,6 +46,12 @@ int add(MList* phead, int index, int data)
 
 int del(MList* item, int index)
 {
+/**
+@brief Функция удаления элемента по индексу
+@detailed Данная функция удаляет элемент расположенного по заданному индексу
+@param item первый элемент списка
+@param index индекс удаляемого элемента списка
+*/
 	MList *tmp = NULL;
 	int i;
 	if (index == 0)
@@ -66,6 +77,13 @@ int del(MList* item, int index)
 
 int get(MList* phead, int index, int* pdata)
 {
+/**
+@brief Функция получения данных элемента по индексу
+@detailed Данная функция получает данные элемента списка
+@param phead первый элемент списка
+@param index индекс необходимого элемента списка
+@param pdata адрес, куда попадут данные, полученные в результате работы программы
+*/
 	MList *tmp = phead;
 	int i = 0;
 	while (tmp->next != NULL && i <= index) {
